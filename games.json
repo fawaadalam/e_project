@@ -1,0 +1,19 @@
+{
+    "games": [
+      {
+        "title": "How To Play Backyard Dice",
+        "description": "With the ability to play Yardzee and Farkle our Backyard Dice is classic lawn game entertainment. Endless summer fun for all ages.",
+        "image": "backyard-dice-photoshoot.jpg"
+      },
+      {
+        "title": "How To Play Cornhole",
+        "description": "Cornhole is world famous, enjoyed by millions, and we're bringing it back to New Zealand! Test your accuracy and technique where the sky is the limit!",
+        "image": "istockphoto-1353141513-612x612.jpg"
+      },
+      {
+        "title": "How To Play Tumbling Tower",
+        "description": "Put your focus to test with the Giant Tumbling Tower! Enjoy this skilled based games with as many players as you would like!",
+        "image": "164693.jpg"
+      }
+    ]
+  }
