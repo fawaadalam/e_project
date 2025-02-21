@@ -1,0 +1,211 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    width: 400px;
+    height: 655px;
+    perspective: 1000px;
+    cursor: pointer;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    overflow: hidden;
+}
+
+.card:hover{
+    box-shadow: 0 0.9375rem 1.875rem rgb(77 87 222 / 30%);
+    background:#fff;
+}
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-front {
+    background-color: #ffffff;
+}
+
+.card-back {
+    background-color: #ffffff;
+    color: #666;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.09;
+}
+.card-image-container{
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+.card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    color: #333;
+    font-size: 1.8rem;
+    margin: 0 0 10px;
+}
+
+.card-description {
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0 0 20px;
+}
+
+.card-button, .flip-button {
+    background-color: #00A896;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    font-family:'Rubik', sans-serif;
+    display: inline-block;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+--webkit-transition: all 0.3s ease-in-out;
+box-shadow: 0 0.625rem 1.875rem rgb(118 85 225 / 30%);
+border: double 0.125rem transparent;
+border-radius: double 0.125rem transparent;
+text-align: center;
+font-weight: 500;
+}
+
+.card-button:hover, .flip-button:hover {
+    background-color: #00A896;
+}
+.v-button{
+    background-image: linear-gradient(to right, #00A896 0%, #00A896 100%), radial-gradient(circle at top left, #00A896, #00A896);
+    color: #fff;
+}
+.v-button:hover{
+    border-color: #00A896;
+    background: #fff;
+    box-shadow: none;
+    color: #00A896;
+}
+.m-button{
+    background-image: linear-gradient(to right, #00A896 0%, #00A896 100%), radial-gradient(circle at top left, #00A896, #00A896);
+    color: #fff;
+}
+.m-button:hover{
+    border-color: #00A896;
+    background: #fff;
+    box-shadow: none;
+    color: #00A896;
+}
+.j-button{
+    background-image: linear-gradient(to right, #00A896 0%, #00A896 100%), radial-gradient(circle at top left, #00A896, #00A896);
+    color: #fff;
+}
+.j-button:hover{
+    border-color: #00A896;
+    background: #fff;
+    box-shadow: none;
+    color: #00A896;
+}
+.card-button {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #e0e0e0;
+    position: absolute;
+    bottom: 0;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.5s ease;
+}
+
+.details-link {
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.details-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
