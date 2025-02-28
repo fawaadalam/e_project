@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Game: Comprehensive Guide & Rules</title>
+    <style>
+        :root {
+            
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            background: var(--primary-color);
+            color: var(--accent-color);
+            padding: 1.2rem 2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: "⛳";
+            font-size: 1.5rem;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .section-content ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            list-style: none;
+        }
+
+        .section-content li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .section-content li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .intro-text {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .featured-image:hover {
+            transform: scale(1.02);
+        }
+
+        .divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            margin: 2.5rem 0;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+            .section-content {
+                padding: 1.5rem;
+            }
+
+            .featured-image {
+                height: 200px;
+            }
+        }
+
+        .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Master the Game of Golf</h1>
+    </div>
+
+    <div class="container">
+        <div class="intro-text">
+            <h2>Welcome to the World of Golf</h2>
+            <p class="lead-text">Discover the art and science behind one of the world's most beloved precision sports. Whether you're a beginner or looking to refine your skills, this guide will help you navigate the green with confidence.</p>
+            
+            <div class="image-grid">
+                <img src="https://cdn.pixabay.com/photo/2018/09/17/09/26/golf-3683337_960_720.jpg" 
+                     alt="Golf ball near hole on green" 
+                     class="featured-image"
+                     width="600"
+                     height="400">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-459kTuqpES8z6IfTEQKsQjOyWP4LsC.png" 
+                     alt="Golfer swinging on course" 
+                     class="featured-image"
+                     width="600"
+                     height="400">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <div class="section-title">Essential Golf Terminology</div>
+            <div class="section-content">
+                <ul>
+                    <li><strong>Course Architecture</strong>: Understand the layout featuring tee boxes, fairways, and greens designed for strategic play.</li>
+                    <li><strong>Scoring System</strong>: Master terms like Par, Birdie (-1), Eagle (-2), and Bogey (+1) to track your performance.</li>
+                    <li><strong>Equipment Glossary</strong>: From drivers to putters, learn the tools of the trade and their specific uses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Complete Rulebook & Etiquette</div>
+            <div class="section-content">
+                <ul>
+                    <li><strong>Stroke Play Regulations</strong>: Detailed breakdown of scoring, penalties, and tournament rules.</li>
+                    <li><strong>Course Management</strong>: Proper handling of hazards, lost balls, and out-of-bounds situations.</li>
+                    <li><strong>Player Etiquette</strong>: Maintain pace of play, respect fellow golfers, and preserve course conditions.</li>
+                </ul>
+                <img src="https://cdn.pixabay.com/photo/2018/03/11/09/11/golf-3216250_960_720.jpg"
+                     alt="Golf club and ball" 
+                     class="featured-image"
+                     width="800"
+                     height="500">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Game Formats & Strategies</div>
+            <div class="section-content">
+                <ul>
+                    <li><strong>Stroke vs Match Play</strong>: Choose your competitive format and learn winning strategies.</li>
+                    <li><strong>Course Navigation</strong>: Read greens effectively and select the right clubs for each situation.</li>
+                    <li><strong>Mental Game</strong>: Develop focus and resilience to handle pressure situations.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Next Steps in Your Golf Journey</div>
+            <div class="section-content">
+                <p>Ready to take your game to the next level? Explore these resources:</p>
+                <ul>
+                    <li>Local golf courses with beginner-friendly programs</li>
+                    <li>Recommended training equipment and apps</li>
+                    <li>Upcoming tournaments and events</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="#" class="cta-button">Start Playing Today!</a>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Golf Game. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
