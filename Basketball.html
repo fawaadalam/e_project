@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball - The Game of Hoops</title>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero section with parallax effect */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #1a365d;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0jk9AG5BPMiJ46JVVHl1BTI3DKu8J9.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 #ff6b00;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: float 2s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            50% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .scroll-down::after {
+            content: "↓";
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+
+        /* Overview section */
+        .overview {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #ff6b00 0%, #3498db 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview::before {
+            content: "🏀";
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            top: -5rem;
+            right: -5rem;
+            transform: rotate(15deg);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background-color: white;
+        }
+
+        .overview-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Quick guide section */
+        .quick-guide {
+            padding: 5rem 2rem;
+            background-color: white;
+            position: relative;
+        }
+
+        .quick-guide-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guide-title {
+            width: 100%;
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b00;
+        }
+
+        .guide-card {
+            flex: 1 1 250px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .guide-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ff6b00;
+        }
+
+        .guide-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a365d;
+            display: flex;
+            align-items: center;
+        }
+
+        .guide-card h3 span {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .guide-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .guide-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .guide-card li::before {
+            content: "•";
+            color: #ff6b00;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* Gallery section */
+        .gallery {
+            padding: 5rem 2rem;
+            background-color: #1a365d;
+            color: white;
+        }
+
+        .gallery-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b00;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* How to play section */
+        .how-to-play {
+            padding: 5rem 2rem;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-to-play::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff6b00 0%, transparent 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        .how-to-play-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .how-to-play-title {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .how-to-play-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b00;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            background-color: #ff6b00;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: #1a365d;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background-color: #1a365d;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .basketball-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title,
+            .guide-title,
+            .gallery-title,
+            .how-to-play-title {
+                font-size: 2rem;
+            }
+
+            .overview-content {
+                font-size: 1rem;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a365d 0%, #0f2342 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover span {
+            color: #1a365d;
+        }
+
+        /* Add basketball icon animation */
+        .cta-button::after {
+            content: "🏀";
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: rotate(360deg) scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Basketball</h1>
+            <p class="hero-subtitle">The game that unites passion, skill, and teamwork</p>
+        </div>
+        <div class="scroll-down">Scroll Down</div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="overview-content">
+            <h2 class="section-title">🏀 Overview</h2>
+            <p>Basketball is a fast-paced sport played between two teams, each aiming to score points by shooting the
+                ball into the opponent's hoop. It is played on a rectangular court with a hoop on each end.</p>
+            <p>The game combines athleticism, strategy, and teamwork, making it one of the most popular sports
+                worldwide. From neighborhood courts to professional arenas, basketball brings people together through
+                the love of the game.</p>
+        </div>
+    </section>
+
+    <!-- Quick Guide Section -->
+    <section class="quick-guide">
+        <div class="quick-guide-container">
+            <h2 class="guide-title">Basketball: Quick Guide 🏀</h2>
+
+            <div class="guide-card">
+                <h3><span>🏟️</span> Setup & Equipment</h3>
+                <ul>
+                    <li>Players: 5 per team on the court.</li>
+                    <li>Court: 28m x 15m, hoops at 10ft height.</li>
+                    <li>Ball: Size 7 (29.5 inches).</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3><span>📜</span> Basic Rules</h3>
+                <ul>
+                    <li>Objective: Score by shooting the ball into the opponent's hoop.</li>
+                    <li>Scoring:
+                        <ul>
+                            <li>3 Points: Beyond the three-point arc.</li>
+                            <li>2 Points: Inside the arc.</li>
+                            <li>1 Point: Free throws.</li>
+                        </ul>
+                    </li>
+                    <li>Game Duration:
+                        <ul>
+                            <li>NBA: 4×12 min</li>
+                            <li>FIBA: 4×10 min</li>
+                            <li>College: 2×20 min halves</li>
+                        </ul>
+                    </li>
+                    <li>Shot Clock: 24 sec to attempt a shot.</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3><span>⚠️</span> Common Violations</h3>
+                <ul>
+                    <li>Traveling: Moving without dribbling.</li>
+                    <li>Double Dribble: Stopping and restarting dribble.</li>
+                    <li>Backcourt Violation: Returning the ball past half-court.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2 class="gallery-title">Basketball in Action</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0jk9AG5BPMiJ46JVVHl1BTI3DKu8J9.png"
+                    alt="Basketball going through hoop">
+                <div class="gallery-caption">
+                    <h3>The Perfect Shot</h3>
+                    <p>Nothing but net - the sweet sound of success.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jql9kSB3IuENNHYfGpcW1eWoNbWq0E.png"
+                    alt="Basketball game in action">
+                <div class="gallery-caption">
+                    <h3>Game Time</h3>
+                    <p>College basketball rivalry between Spartans and North Carolina.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-S2zQmsi4DFY93Evg1snlpWEA9OLPf7.png"
+                    alt="Person shooting basketball">
+                <div class="gallery-caption">
+                    <h3>Reaching Higher</h3>
+                    <p>The sky is the limit when you're chasing your dreams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section class="how-to-play">
+        <div class="how-to-play-container">
+            <h2 class="how-to-play-title">🎯 How to Play</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Start with a jump ball</h3>
+                        <p>The game begins with a jump ball at center court, where a referee tosses the ball up between
+                            two opposing players.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Dribble or pass to move the ball</h3>
+                        <p>Players must dribble (bounce) the ball while moving, or pass to teammates to advance the ball
+                            up the court.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Shoot or drive to score</h3>
+                        <p>Players can score by shooting from distance or driving to the basket for a layup or dunk.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Defend by blocking shots and stealing</h3>
+                        <p>On defense, players work to prevent the opposing team from scoring by blocking shots and
+                            stealing the ball.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Rebound missed shots</h3>
+                        <p>When a shot is missed, players from both teams compete to gain possession of the ball.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Win by having the most points at the end!</h3>
+                        <p>The team with the highest score when time expires wins the game.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- button -->
+    <div class="button-container">
+        <a href="#" class="cta-button">
+            <span>Start Playing Today!</span>
+        </a>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="basketball-icon">🏀</div>
+            <h2 class="footer-title">Love the Game</h2>
+            <p class="footer-text">Basketball is more than just a sport—it's a passion, a lifestyle, and a global
+                community.</p>
+            <p>&copy; 2025 Basketball Enthusiasts</p>
+        </div>
+    </footer>
+</body>
+
+</html>

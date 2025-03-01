@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf - The Game of Precision</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #1a365d;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2018/09/17/09/26/golf-3683337_960_720.jpg') no-repeat center center/cover;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 #ff6b00;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background-color: #ff6b00;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Card Styling */
+        .guide-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #ff6b00;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .guide-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #1a365d;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .featured-image:hover {
+            transform: scale(1.03);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .featured-image:hover .image-caption {
+            transform: translateY(0);
+        }
+
+
+        .cta-button {
+            background: linear-gradient(135deg, #1a365d 0%, #0f2342 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1px;
+        }
+
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover span {
+            color: #1a365d;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+        }
+
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #ff6b00;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial {
+            background: #1a365d;
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 10rem 0;
+            /* Existing margin */
+            margin-bottom: 5rem;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #ff6b00;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            padding: 3rem 2rem;
+            background-color: #1a365d;
+            color: white;
+            text-align: center;
+            margin: 0px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Golf</h1>
+            <p class="hero-subtitle">The game of precision patience</p>
+        </div>
+    </section>
+    <!-- Content Sections -->
+    <section class="section">
+        <div class="section-content">
+            <h2 class="section-title">🏌️ Golf Fundamentals</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <p>Holes in Standard Course</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72</div>
+                    <p>Par for Championship Courses</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">300+</div>
+                    <p>Professional Tournaments Annually</p>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="featured-image">
+                    <img src="https://cdn.pixabay.com/photo/2018/09/17/09/26/golf-3683337_960_720.jpg"
+                        alt="Golf ball near hole" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="image-caption">
+                        <h3>Perfect Green</h3>
+                        <p>Professional course maintenance standards</p>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <img src="https://cdn.pixabay.com/photo/2016/03/27/19/54/golf-1284011_1280.jpg" alt="Golfer swing"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="image-caption">
+                        <h3>Pro Swing</h3>
+                        <p>Mastering the perfect golf swing technique</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial" style="margin-bottom: 3rem;">
+                <div class="quote-icon">
+                    <h4>“Golf”</h4>
+                </div>
+                <blockquote>
+                    "Golf is the closest game to the game we call life. You get bad breaks from good shots;
+                    you get good breaks from bad shots – but you have to play the ball where it lies."
+                </blockquote>
+                <p>- Bobby Jones</p>
+            </div>
+
+            <div class="guide-card">
+                <h3>Essential Terminology</h3>
+                <img src="https://cdn.pixabay.com/photo/2016/03/27/19/54/golf-1284011_1280.jpg" alt="Golf Terminology"
+                    class="guide-image">
+                <ul>
+                    <li><strong>Course Architecture</strong>: Understand the layout featuring tee boxes, fairways, and
+                        greens designed for strategic play.</li>
+                    <li><strong>Scoring System</strong>: Master terms like Par, Birdie (-1), Eagle (-2), and Bogey (+1)
+                        to track your performance.</li>
+                    <li><strong>Equipment Glossary</strong>: From drivers to putters, learn the tools of the trade and
+                        their specific uses.</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3>Complete Rulebook & Etiquette</h3>
+                <img src="https://cdn.pixabay.com/photo/2015/08/08/15/31/golf-880532_1280.jpg" alt="Golf Rules"
+                    class="guide-image">
+                <ul>
+                    <li><strong>Stroke Play Regulations</strong>: Detailed breakdown of scoring, penalties, and
+                        tournament rules.</li>
+                    <li><strong>Course Management</strong>: Proper handling of hazards, lost balls, and out-of-bounds
+                        situations.</li>
+                    <li><strong>Player Etiquette</strong>: Maintain pace of play, respect fellow golfers, and preserve
+                        course conditions.</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3>Game Formats & Strategies</h3>
+                <img src="https://cdn.pixabay.com/photo/2017/10/02/13/51/golf-2808865_1280.jpg" alt="Golf Strategies"
+                    class="guide-image">
+                <ul>
+                    <li><strong>Stroke vs Match Play</strong>: Choose your competitive format and learn winning
+                        strategies.</li>
+                    <li><strong>Course Navigation</strong>: Read greens effectively and select the right clubs for each
+                        situation.</li>
+                    <li><strong>Mental Game</strong>: Develop focus and resilience to handle pressure situations.</li>
+                </ul>
+            </div>
+
+
+            <div class="guide-card">
+                <h3>Next Steps in Your Golf Journey</h3>
+                <img src="https://cdn.pixabay.com/photo/2020/04/20/07/45/golf-club-5066832_1280.jpg" alt="Golf Journey"
+                    class="guide-image">
+                <ul>
+                    <li>Local golf courses with beginner-friendly programs</li>
+                    <li>Recommended training equipment and apps</li>
+                    <li>Upcoming tournaments and events</li>
+                </ul>
+            </div>
+            <section class="section" style="text-align: center; background: #f8f9fa; margin: 0;">
+                <!-- Set margin to 0 -->
+                <a href="#" class="cta-button">
+                    <span>Start Your Golf Journey Today</span>
+                    ⛳
+                </a>
+            </section>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <h2 class="footer-title">Love the Game</h2>
+                    <p class="footer-text">Golf is more than just a sport—it's a passion, a lifestyle, and a global
+                        community.</p>
+                    <p>&copy; 2025 Golf Enthusiasts</p>
+                </div>
+            </footer>
+</body>
+
+</html>
