@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football - The Beautiful Game</title>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero section with parallax effect */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #2e8b57; /* Dark green */
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2023/09/21/06/10/football-8266065_640.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 #ffcc00; /* Gold shadow */
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: float 2s infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            50% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .scroll-down::after {
+            content: "↓";
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+
+        /* Overview section */
+        .overview {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); /* Green gradient */
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview::before {
+            content: "⚽";
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            top: -5rem;
+            right: -5rem;
+            transform: rotate(15deg);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background-color: white;
+        }
+
+        .overview-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Quick guide section */
+        .quick-guide {
+            padding: 5rem 2rem;
+            background-color: #ffffff; /* White background */
+            position: relative;
+        }
+
+        .quick-guide-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guide-title {
+            width: 100%;
+            font-size: 2.5rem;
+            color: #2e8b57; /* Dark green */
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffcc00; /* Gold */
+        }
+
+        .guide-card {
+            flex: 1 1 250px;
+            background-color: #f8f9fa; /* Light gray */
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .guide-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ffcc00; /* Gold */
+        }
+
+        .guide-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2e8b57; /* Dark green */
+            display: flex;
+            align-items: center;
+        }
+
+        .guide-card h3 span {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .guide-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .guide-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .guide-card li::before {
+            content: "•";
+            color: #ffcc00; /* Gold */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* Gallery section */
+        .gallery {
+            padding: 5rem 2rem;
+            background-color: #2e8b57; /* Dark green */
+            color: white;
+        }
+
+        .gallery-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffcc00; /* Gold */
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* How to play section */
+        .how-to-play {
+            padding: 5rem 2rem;
+            background-color: #f8f9fa; /* Light gray */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-to-play::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ffcc00 0%, transparent 70%); /* Gold */
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        .how-to-play-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .how-to-play-title {
+            font-size: 2.5rem;
+            color: #2e8b57; /* Dark green */
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .how-to-play-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffcc00; /* Gold */
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            background-color: #ffcc00; /* Gold */
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2e8b57; /* Dark green */
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background-color: #2e8b57; /* Dark green */
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .football-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title,
+            .guide-title,
+            .gallery-title,
+            .how-to-play-title {
+                font-size: 2rem;
+            }
+
+            .overview-content {
+                font-size: 1rem;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2e8b57 0%, #1b5e20 100%); /* Darker green gradient */
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffcc00 0%, #ffeb3b 100%); /* Gold gradient */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover span {
+            color: #1a365d;
+        }
+
+        /* Add football icon animation */
+        .cta-button::after {
+            content: "⚽";
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: rotate(360deg) scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Football</h1>
+            <p class="hero-subtitle">The game that unites skill, speed, and teamwork</p>
+        </div>
+        <div class="scroll-down">Scroll Down</div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="overview-content">
+            <h2 class="section-title">⚽ Overview</h2>
+            <p>Football, also known as soccer, is the world's most popular sport, played between two teams of 11 players each. The goal is to score points by getting the ball into the opponent's net while following the rules of the game.</p>
+            <p>It is a fast-paced sport requiring agility, coordination, and teamwork. Played in backyards, streets, schools, and professional stadiums, football brings people together across the globe.</p>
+        </div>
+    </section>
+
+    <!-- Quick Guide Section -->
+    <section class="quick-guide">
+        <div class="quick-guide-container">
+            <h2 class="guide-title">Football: Quick Guide ⚽</h2>
+
+            <div class="guide-card">
+                <h3><span>🏟️</span> Setup & Equipment</h3>
+                <ul>
+                    <li>Players: 11 per team (including 1 goalkeeper).</li>
+                    <li>Field Dimensions: 90m - 120m (length) × 45m - 90m (width).</li>
+                    <li>Goal Size: 7.32m (width) × 2.44m (height).</li>
+                    <li>Ball: Spherical, size 5 for professional matches.</li>
+                    <li>Gear: Jersey, shorts, shin guards, socks, and football boots.</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3><span>📜</span> Basic Rules</h3>
+                <ul>
+                    <li>Objective: Score by getting the ball into the opponent's goal.</li>
+                    <li>Game Duration:
+                        <ul>
+                            <li>90 minutes (two halves of 45 minutes each).</li>
+                            <li>Extra time and penalty shootouts in case of a draw (in knockout matches).</li>
+                        </ul>
+                    </li>
+                    <li>Scoring:
+                        <ul>
+                            <li>1 Goal = 1 Point (only if the entire ball crosses the goal line).</li>
+                        </ul>
+                    </li>
+                    <li>Game Start:
+                        <ul>
+                            <li>Begins with a kickoff from the center of the field.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <h3><span>⚠️</span> Common Violations</h3>
+                <ul>
+                    <li>Handball: Touching the ball with hands (except the goalkeeper inside the penalty area).</li>
+                    <li>Offside: An attacking player is ahead of the last defender when the ball is passed to them.</li>
+                    <li>Fouls:
+                        <ul>
+                            <li>Tripping, pushing, or tackling an opponent unfairly.</li>
+                            <li>Results in free kicks, penalty kicks, or yellow/red cards.</li>
+                        </ul>
+                    </li>
+                    <li>Corner Kick: Awarded if the defending team last touches the ball before it crosses their goal line.</li>
+                    <li>Throw-In: Awarded if the ball completely crosses the sideline.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2 class="gallery-title">Football in Action</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-CGML0X5lAHmMz9hR7TcGtKfO2ey3eB.png" alt="Team training session">
+                <div class="gallery-caption">
+                    <h3>Team Training</h3>
+                    <p>Building skills and teamwork on the field.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://media.istockphoto.com/id/1199914674/photo/soccer-practice.jpg?s=612x612&w=0&k=20&c=j-ngRCRnfFf9BXr_76ZU--8AFqDT-ivqQHXB6xMOC2g=" alt="Players in action">
+                <div class="gallery-caption">
+                    <h3>Players in Action</h3>
+                    <p>Experience the thrill of the game.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://media.istockphoto.com/id/918080812/photo/soccer-practice-indoors.jpg?s=612x612&w=0&k=20&c=ab-050SmgjONdvrMLXLypMDBx-U9WS3I-OU1sCNbk3o=" alt="Football on field">
+                <div class="gallery-caption">
+                    <h3>On the Field</h3>
+                    <p>The beautiful game played at its best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section class="how-to-play">
+        <div class="how-to-play-container">
+            <h2 class="how-to-play-title">🎯 How to Play</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Kickoff to Start the Match</h3>
+                        <p>The game begins with a kickoff from the center circle.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Dribble, Pass & Control the Ball</h3>
+                        <p>Players use their feet to dribble and pass while advancing toward the goal.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Defend & Block Opponent's Attacks</h3>
+                        <p>Defenders work to block shots and regain possession.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Attempt to Score Goals</h3>
+                        <p>Players shoot the ball past the goalkeeper to score.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Goalkeeper Saves & Distributes</h3>
+                        <p>The goalkeeper stops shots and distributes the ball to teammates.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Win by Scoring More Goals!</h3>
+                        <p>The team with the most goals at the end of the match wins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Button -->
+    <div class="button-container">
+        <a href="#" class="cta-button">
+            <span>Start Playing Today!</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="football-icon">⚽</div>
+            <h2 class="footer-title">Love the Game</h2>
+            <p class="footer-text">Football is more than just a sport—it's a passion, a lifestyle, and a global community.</p>
+            <p>&copy; 2025 Football Enthusiasts</p>
+        </div>
+    </footer>
+</body>
+
+</html>
